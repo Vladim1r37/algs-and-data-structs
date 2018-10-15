@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 public class ArrayTest {
     public static void main(String[] args) {
         // Создаю массив на 1000000 элементов внутри класса, работающего с массивом
-        ArrayManaged myArray = new ArrayManaged(1000000);
+        ArrayManaged myArray = new ArrayManaged(100000);
 
         // Заполняю массив случайными числами
         myArray.fillRandom(30000);
@@ -15,6 +15,10 @@ public class ArrayTest {
 
         // Ищу число 100 в массиве
         System.out.println("Есть ли число 100 в массиве - " + myArray.find(100));
+
+        // Поиск числа бинарным поиском
+        System.out.println("Есть ли число 100 в массиве - " + myArray.binarySearch(100));
+
 
         // Такое число есть. Удаляю 100
         System.out.println("Удалить число 100 из массива - " + myArray.remove(100));
