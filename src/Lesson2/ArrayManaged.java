@@ -65,4 +65,26 @@ public class ArrayManaged {
     public int[] getData() {
         return data;
     }
+
+    public boolean binarySearch(int value) {
+        return indexOfSorted(value) != -1;
+    }
+
+    private int indexOfSorted(int value) {
+        ArrayUtils.sortInsert(this.data);
+        int low = 0;
+        int high = this.size - 1;
+        int mid;
+        while (low < high) {
+            mid = (low + high) / 2;
+            if (value == this.data[mid])
+                return mid;
+            else {
+                if (value < this.data[mid])
+                    high = mid;
+                else low = mid + 1;
+            }
+        }
+        return -1;
+    }
 }
