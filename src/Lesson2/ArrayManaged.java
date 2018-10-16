@@ -1,5 +1,6 @@
 package Lesson2;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class ArrayManaged {
@@ -10,6 +11,11 @@ public class ArrayManaged {
     public ArrayManaged(int maxSize) {
         this.data = new int[maxSize];
         this.size = 0;
+    }
+
+    public ArrayManaged(int[] data, int size) {
+        this.data = data;
+        this.size = size;
     }
 
     public boolean add(int value) {
@@ -81,10 +87,15 @@ public class ArrayManaged {
                 return mid;
             else {
                 if (value < this.data[mid])
-                    high = mid;
+                    high = mid - 1;
                 else low = mid + 1;
             }
         }
         return -1;
     }
+
+    public ArrayManaged copy() {
+        return new ArrayManaged(Arrays.copyOf(data, data.length), size);
+    }
+
 }
