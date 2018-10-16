@@ -75,7 +75,7 @@ public class ArrayManaged {
         int low = 0;
         int high = this.size - 1;
         int mid;
-        while (low < high) {
+        while (low <= high) {
             mid = (low + high) / 2;
             if (value == this.data[mid])
                 return mid;
