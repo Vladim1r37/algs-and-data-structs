@@ -1,5 +1,6 @@
 package Lesson2;
 
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 public class ArrayTest {
@@ -9,6 +10,10 @@ public class ArrayTest {
 
         // Заполняю массив случайными числами
         myArray.fillRandom(30000);
+        ArrayManaged myArrayCopy1 = myArray.copy();
+        ArrayManaged myArrayCopy2 = myArray.copy();
+        ArrayManaged myArrayCopy3 = myArray.copy();
+
 
         // Пытаюсь добавить новое значение в полный массив
         System.out.println("Добавить число 100 в массив - " + myArray.add(100));
@@ -29,21 +34,19 @@ public class ArrayTest {
         //Тест сортировки пузырьковым методом
         System.out.println("sort bubble");
         long start = System.nanoTime();
-        ArrayUtils.sortBubble(myArray.getData());
+        ArrayUtils.sortBubble(myArrayCopy1.getData());
         System.out.println("Время сортировки - " + TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - start) + " миллисекунд");
-        myArray.fillRandom(30000);
 
         //Тест сортировки методом выбора
         System.out.println("sort select");
         start = System.nanoTime();
-        ArrayUtils.sortSelect(myArray.getData());
+        ArrayUtils.sortSelect(myArrayCopy2.getData());
         System.out.println("Время сортировки - " + TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - start) + " миллисекунд");
-        myArray.fillRandom(30000);
 
         //Тест сортировки методом вставки
         System.out.println("sort insert");
         start = System.nanoTime();
-        ArrayUtils.sortInsert(myArray.getData());
+        ArrayUtils.sortInsert(myArrayCopy3.getData());
         System.out.println("Время сортировки - " + TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - start) + " миллисекунд");
 
     }
