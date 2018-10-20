@@ -22,7 +22,7 @@ public class QueueImpl implements Queue {
     public void insert(int value) {
         if (rear == data.length - 1)
             rear = DEFAULT_REAR;
-        data[rear] = value;
+        data[++rear] = value;
         size++;
     }
 
