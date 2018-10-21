@@ -24,7 +24,7 @@ public class Main3 {
 
     }
 
-    private static void testPtiorityQueue() {
+    private static void testPriorityQueue() {
         System.out.println("test PriorityQueue:");
         PriorityQueue queue = new PriorityQueue(5);
         PriorityQueueManager pQManager = new PriorityQueueManager(queue);
