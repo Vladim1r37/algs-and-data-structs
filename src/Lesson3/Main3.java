@@ -10,10 +10,46 @@ public class Main3 {
         testQueueManager();
 
         // проверяем приоритетную очередь
-        testPtiorityQueue();
+        testPriorityQueue();
 
         // тест программы переворачивания строки
         testStringReverse();
+
+        // тест класса Deque
+        testDequeManager();
+    }
+
+    private static void testDequeManager() {
+        System.out.println("test DequeManager:");
+
+        DequeImpl deque = new DequeImpl(6);
+        DequeManager dManager = new DequeManager(deque);
+        System.out.println("\n");
+        System.out.println(dManager.insertRight(1));
+        System.out.println(dManager.insertRight(2));
+        System.out.println(dManager.insertRight(3));
+        System.out.println(dManager.insertRight(4));
+        System.out.println(dManager.insertRight(5));
+        System.out.println(dManager.insertRight(6));
+        System.out.println(dManager.insertRight(7));
+        System.out.println("\n");
+        System.out.println(dManager.removeLeft());
+        System.out.println(dManager.removeLeft());
+        System.out.println(dManager.removeLeft());
+        System.out.println("\n");
+        System.out.println(dManager.removeRight());
+        System.out.println(dManager.removeRight());
+        System.out.println("\n");
+        System.out.println(dManager.insertLeft(3));
+        System.out.println(dManager.insertLeft(2));
+        System.out.println("\n");
+        dManager.displayLeftToRight();
+        System.out.println("\n");
+        dManager.displayRightToLeft();
+
+        System.out.println("finish test DequeManager:");
+
+
     }
 
     private static void testStringReverse() {
