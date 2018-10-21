@@ -11,6 +11,17 @@ public class Main3 {
 
         // проверяем приоритетную очередь
         testPtiorityQueue();
+
+        // тест программы переворачивания строки
+        testStringReverse();
+    }
+
+    private static void testStringReverse() {
+        System.out.println("test StringReverse:");
+        StringReverse.StringReverse("попугай");
+        System.out.println("\n");
+        System.out.println("finish StringReverse:");
+
     }
 
     private static void testPtiorityQueue() {
