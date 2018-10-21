@@ -5,11 +5,11 @@ public class QueueImpl implements Queue {
     public static final int DEFAULT_FRONT = 0;
     public static final int DEFAULT_REAR = -1;
 
-    private int[] data;
-    private int size;
+    protected int[] data;
+    protected int size;
 
-    private int front;
-    private int rear;
+    protected int front;
+    protected int rear;
 
     public QueueImpl(int maxSize) {
         this.data = new int[maxSize];
