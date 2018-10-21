@@ -8,9 +8,36 @@ public class Main3 {
 
         // работаем с очередью целых чисел
         testQueueManager();
+
+        // проверяем приоритетную очередь
+        testPtiorityQueue();
+    }
+
+    private static void testPtiorityQueue() {
+        System.out.println("test PriorityQueue:");
+        PriorityQueue queue = new PriorityQueue(5);
+        PriorityQueueManager pQManager = new PriorityQueueManager(queue);
+        // приоритет чисел должен быть в пределах 0-20. Наивысший приоритет - 0
+        System.out.println(pQManager.insert(10, 0));
+        System.out.println(pQManager.insert(20, 10));
+        System.out.println(pQManager.insert(30, 10));
+        System.out.println(pQManager.insert(40, 20));
+        System.out.println(pQManager.insert(50));
+        System.out.println(pQManager.insert(60));
+        System.out.println("\n");
+        System.out.println(pQManager.remove());
+        System.out.println(pQManager.remove());
+        System.out.println("\n");
+        System.out.println(pQManager.insert(20, 0));
+        System.out.println(pQManager.insert(60, 20));
+        System.out.println("\n");
+        queue.display();
+        System.out.println("finish test PriorityQueue:");
+
     }
 
     private static void testQueueManager() {
+        System.out.println("test QueueManager:");
         // создаем экземпляр очереди
         QueueImpl queue = new QueueImpl(5);
         // создаем экземпляр класса для безопасной работы с очередью
@@ -48,7 +75,7 @@ public class Main3 {
         // проверяем метод чтения элемента, первого на выдачу в очереди
         System.out.println("\n");
         System.out.println(queue.peek());
-
+        System.out.println("finish test QueueManager:");
     }
 
     private static void testBracketChecker() {
