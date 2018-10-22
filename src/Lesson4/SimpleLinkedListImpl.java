@@ -1,6 +1,11 @@
 package Lesson4;
 
-public class SimpleLinkedListImpl implements LinkedList {
+import java.util.Iterator;
+
+public class SimpleLinkedListImpl implements LinkedList, Iterable {
+
+
+
 
     protected Link firstElement;
     protected int size;
@@ -84,5 +89,18 @@ public class SimpleLinkedListImpl implements LinkedList {
     @Override
     public Link getFirstElement() {
         return firstElement;
+    }
+
+    public void setFirstElement(Link first) {
+        this.firstElement = first;
+    }
+
+    public LinkIterator getIterator() {
+        return new LinkIterator(this);
+    }
+
+    @Override
+    public Iterator<Link> iterator() {
+        return new LinkIterator(this);
     }
 }
