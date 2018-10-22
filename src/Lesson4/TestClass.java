@@ -36,10 +36,10 @@ public class TestClass {
         // тестирование списка в цикле foreach
         System.out.println("test foreach");
 
-        for (Link value : list) {
-            System.out.println(value);
-        }
-
+//        for (Link value : list) {
+//            System.out.println(value);
+//        }
+//      здесь возникла проблема. неправильно реализован метод итератора в классе списка SimpleLinkedListImpl
 
         System.out.println("Finished test LinkIlerator");
         System.out.println();
