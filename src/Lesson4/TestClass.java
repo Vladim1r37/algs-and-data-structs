@@ -9,6 +9,41 @@ public class TestClass {
         testTwoSideLinkedListImpl();
         testLinkedStackInt();
         testLinkedQueue();
+        testLinkIterator();
+
+    }
+
+    private static void testLinkIterator() {
+        System.out.println("Started test LinkIlerator");
+
+        SimpleLinkedListImpl list = new SimpleLinkedListImpl();
+
+        list.add(1);
+
+        list.display();
+
+        LinkIterator itr = new LinkIterator(list);
+        System.out.println(itr.atEnd());
+        itr.insertAfter(3);
+        list.display();
+        System.out.println(itr.getCurrent());
+        itr.insertBefore(2);
+        list.display();
+        System.out.println(itr.getCurrent());
+        itr.deleteCurrent();
+        list.display();
+
+        // тестирование списка в цикле foreach
+        System.out.println("test foreach");
+
+        for (Link value : list) {
+            System.out.println(value);
+        }
+
+
+        System.out.println("Finished test LinkIlerator");
+        System.out.println();
+
 
     }
 
@@ -38,6 +73,8 @@ public class TestClass {
         System.out.println("queue is empty: " + queue.isEmpty());
 
         System.out.println("Finished test LinkedQueueImpl");
+        System.out.println();
+
 
     }
 
@@ -61,8 +98,7 @@ public class TestClass {
         stack.display();
 
         System.out.println("Finished test LinkedStackIntImpl");
-
-
+        System.out.println();
 
 
     }
