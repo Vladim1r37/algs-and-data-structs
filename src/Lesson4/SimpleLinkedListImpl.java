@@ -2,7 +2,7 @@ package Lesson4;
 
 import java.util.Iterator;
 
-public class SimpleLinkedListImpl implements LinkedList, Iterable {
+public class SimpleLinkedListImpl implements LinkedList {
 
 
 
