@@ -2,35 +2,19 @@ package Lesson4;
 
 import java.util.Iterator;
 
-public class LinkIterator implements Iterator {
+public class LinkIterator implements Iterator<Link> {
 
     private Link current;
     private Link previous;
-    private SimpleLinkedListImpl list;
+    private LinkedList list;
+    private boolean firstIterate = true;
 
-    public LinkIterator(SimpleLinkedListImpl list) {
+    public LinkIterator(LinkedList list) {
         this.list = list;
-        this.reset();
-    }
-
-    private void reset() {
-        current = list.getFirstElement();
-        previous = null;
-    }
-
-    public boolean atEnd() {
-        return current.getNext() == null;
-    }
-
-    public void nextLink() {
-        previous = current;
-        current = current.getNext();
     }
 
     public Link getCurrent() {
-        Link temp = current;
-        current = current.getNext();
-        return temp;
+        return current;
     }
 
     public void insertAfter(int value) {
@@ -42,8 +26,14 @@ public class LinkIterator implements Iterator {
         else {
             newLink.setNext(current.getNext());
             current.setNext(newLink);
-            nextLink();
+            next();
         }
+    }
+
+    public void reset(){
+        firstIterate = false;
+        current = list.getFirstElement();
+        previous = null;
     }
 
     public void insertBefore(int value) {
@@ -68,7 +58,7 @@ public class LinkIterator implements Iterator {
         }
         else {
             previous.setNext(current.getNext());
-            if (atEnd())
+            if (!hasNext())
                 reset();
             else
                 current = current.getNext();
@@ -79,11 +69,22 @@ public class LinkIterator implements Iterator {
 
     @Override
     public boolean hasNext() {
-        return current.getNext() != null;
+        if (firstIterate) {
+            firstIterate = false;
+            return list.getFirstElement() != null;
+        }
+        else
+            return current.getNext() != null;
     }
 
     @Override
-    public Object next() {
-        return null;
+    public Link next() {
+        if (current == null)
+            current = list.getFirstElement();
+        else {
+            previous = current;
+            current = current.getNext();
+        }
+        return current;
     }
 }
