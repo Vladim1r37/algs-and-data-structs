@@ -14,21 +14,30 @@ public class TestClass {
     }
 
     private static void testLinkIterator() {
-        System.out.println("Started test LinkIlerator");
+        System.out.println("Started test LinkIterator");
 
-        SimpleLinkedListImpl list = new SimpleLinkedListImpl();
+        LinkedList list = new SimpleLinkedListImpl();
 
         list.add(1);
+        list.add(2);
+        list.add(3);
 
         list.display();
 
         LinkIterator itr = new LinkIterator(list);
-        System.out.println(itr.atEnd());
-        itr.insertAfter(3);
+        System.out.println(itr.hasNext());
+        System.out.println(itr.next());
+
+
+        itr.insertAfter(4);
         list.display();
+
         System.out.println(itr.getCurrent());
-        itr.insertBefore(2);
         list.display();
+
+        itr.insertBefore(0);
+        list.display();
+
         System.out.println(itr.getCurrent());
         itr.deleteCurrent();
         list.display();
@@ -36,12 +45,12 @@ public class TestClass {
         // тестирование списка в цикле foreach
         System.out.println("test foreach");
 
-//        for (Link value : list) {
-//            System.out.println(value);
-//        }
-//      здесь возникла проблема. неправильно реализован метод итератора в классе списка SimpleLinkedListImpl
+        for (Link value : list) {
+            System.out.println(value);
+        }
 
-        System.out.println("Finished test LinkIlerator");
+
+        System.out.println("Finished test LinkIterator");
         System.out.println();
 
 
