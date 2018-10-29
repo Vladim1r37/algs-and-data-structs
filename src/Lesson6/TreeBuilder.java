@@ -2,7 +2,6 @@ package Lesson6;
 
 import java.util.Random;
 
-import static java.lang.Math.max;
 
 public class TreeBuilder {
     public static void main(String[] args) {
@@ -11,13 +10,13 @@ public class TreeBuilder {
         for (int i = 0; i < 20; i++) {
             treeArr[i] = new TreeImpl();
             for (int j = 0; j < 63; j++) {
-                if (getTreeDepth(treeArr[i].getRoot(), 0) <= 6) {
+                if (getTreeDepth(treeArr[i].getRoot(), 0) <= 4) {
                     int rndInt;
                     do {
-                        rndInt = rnd.nextInt(201) - 100;
+                        rndInt = rnd.nextInt(41) - 20;
                     } while (treeArr[i].find(rndInt) != null);
                     treeArr[i].add(rndInt);
-                    if (getTreeDepth(treeArr[i].getRoot(), 0) == 7) {
+                    if (getTreeDepth(treeArr[i].getRoot(), 0) == 5) {
                         treeArr[i].remove(rndInt);
                         break;
                     }
@@ -26,14 +25,19 @@ public class TreeBuilder {
             }
         }
 
+        int countOfBalanced = 0;
+
         for (TreeImpl tree : treeArr) {
             tree.display();
             System.out.println(isBalanced(tree.getRoot()));
+            if (isBalanced(tree.getRoot()))
+                countOfBalanced++;
         }
 
+        System.out.println("Количество сбалансированных деревьев в массиве: "
+                + countOfBalanced * 100 / treeArr.length + "%");
 
-//        treeArr[0].display();
-//        treeArr[0].traverse(TraverseMode.IN_ORDER);
+
     }
 
     private static int getTreeDepth(Node root, int depth) {
