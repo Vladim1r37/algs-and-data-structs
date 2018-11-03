@@ -63,7 +63,7 @@ public class Graph {
     }
 
 
-    public ArrayList<ArrayList<Vertex>> bfsf(String startLabel, String endLabel) {
+    public Vertex bfsf(String startLabel, String endLabel) {
         Vertex startVertex = findVertex(startLabel);
         Vertex endVertex = findVertex(endLabel);
         if (startVertex == null) {
@@ -74,31 +74,23 @@ public class Graph {
         }
 
         Queue<Vertex> queue = new ArrayDeque();
-        ArrayList<ArrayList<Vertex>> arrayLists = new ArrayList<>();
         Vertex currentVertex = startVertex;
-        int index = 0;
-        arrayLists.add(new ArrayList<>());
 
-        visitVertex(currentVertex, queue, arrayLists, index);
-        index++;
-        arrayLists.add(new ArrayList<>());
+        visitVertex(currentVertex, queue);
 
         while (currentVertex != endVertex) {
             currentVertex = getAdjUnvisitedVertex(queue.peek());
             if (currentVertex == null) {
                 queue.remove();
-                if (arrayLists.get(index).contains(queue.peek())) {
-                    index++;
-                    arrayLists.add(new ArrayList<>());
-                }
             }
             else {
-                visitVertex(currentVertex, queue, arrayLists, index);
+                visitVertex(currentVertex, queue);
+                currentVertex.setPrevious(queue.peek());
             }
         }
 
         clearVertexes();
-        return arrayLists;
+        return currentVertex;
     }
 
     private <T extends Collection<Vertex>> void order(String startLabel,
@@ -139,9 +131,8 @@ public class Graph {
     }
 
 
-    private void visitVertex(Vertex vertex, Queue<Vertex> queue, ArrayList<ArrayList<Vertex>> arrayLists, int index) {
+    private void visitVertex(Vertex vertex, Queue<Vertex> queue) {
         vertex.setWasVisited(true);
-        arrayLists.get(index).add(vertex);
         queue.add(vertex);
     }
 
@@ -171,5 +162,21 @@ public class Graph {
             }
         }
         return count;
+    }
+
+    public void findShortestWay(String from, String to) {
+        Vertex current = bfsf(from, to);
+        Vertex startPoint = findVertex(from);
+        Stack<Vertex> stack = new Stack<>();
+        while (current != startPoint) {
+            stack.push(current);
+            current = current.getPrevious();
+        }
+        stack.push(current);
+        System.out.println("Кратчайший путь из " + from + " в " + to + ":");
+        while (stack.size() > 0) {
+            System.out.println(stack.pop());
+        }
+
     }
 }
